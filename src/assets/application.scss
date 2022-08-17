@@ -1,0 +1,143 @@
+/* reset css*/
+body {
+  margin: 0;
+  padding: 0;
+}
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0px;
+  padding: 0px;
+}
+ul,
+ol,
+li,
+pre {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+a,
+a:hover,
+a:focus {
+  text-decoration: none;
+}
+img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.btn,
+button,
+button:focus,
+input:focus,
+textarea:focus,
+select,
+select:focus,
+a:focus {
+  outline: 0px;
+}
+
+input {
+  padding: 0;
+}
+
+
+/* basic setting*/
+  $body-bg: #fff;
+  $font: #444444;
+  $icon-and-light-font: #7a7a7a;
+  $nav-sidebar: #eeeeee;
+  $file: #f6f6f6;
+  $file-selected: #eaeaea;
+  $word-hover: #8994c3;
+  $transparent: rgba(0, 0, 0, 0);
+  $word-hover: #8994c3;
+
+// icon
+$change-mode-url: url('https://i.ibb.co/N1NSSy8/icon03.png');
+// $change-mode-url: url('https://i.ibb.co/X84XNz3/icon04.png');
+$set-url: url('https://i.ibb.co/VTr6q9r/icon-dark.png');
+$open-left-url: url('https://i.ibb.co/FqmQ62h/right-dark.png');
+$open-right-url: url('https://i.ibb.co/3csf0wc/left-dark.png');
+$switch-file-url: url('https://i.ibb.co/kqTxpGx/import-dark.png');
+$link-file-url: url('https://i.ibb.co/YBNjfPx/graph-dark.png');
+$open-command-url: url('https://i.ibb.co/vDJxscj/paper-dark.png');
+$arrow-down-url: url('https://i.ibb.co/dcjYQR1/arrow-down-dark.png');
+$arrow-left-url: url('https://i.ibb.co/59DrYc2/left-arrow-dark.png');
+$title-icon-url: url('https://i.ibb.co/hcHR8hW/file-dark.png');
+$open-vault-url: url('https://i.ibb.co/2dHRVJZ/board-dark.png');
+$query-url: url('https://i.ibb.co/C0Gypwq/query-dark.png');
+$file-explorer-url: url('https://i.ibb.co/hcHR8hW/file-dark.png');
+$search-url: url('https://i.ibb.co/2ZnxY57/search-dark.png');
+$new-file-url: url('https://i.ibb.co/WvC7JGF/new-file-dark.png');
+$folder-url: url('https://i.ibb.co/Z159Jgj/folder-open-dark.png');
+$sort-url: url('https://i.ibb.co/PxjvgZ9/sort-dark.png');
+$glasses-url: url('https://i.ibb.co/5TzPL11/glass-dark.png');
+$delete-url: url('https://i.ibb.co/NYnhG2x/x-dark.png');
+$three-point-url: url('https://i.ibb.co/bPG84q1/three-dot-dark.png');
+$copy-url: url('https://i.ibb.co/vqP65Xk/link-dark.png');
+$move-file-url: url('https://i.ibb.co/KKj4088/fast-dark.png');
+$open-graph-url: url('https://i.ibb.co/YBNjfPx/graph-dark.png');
+$backlinks-url: url('https://i.ibb.co/5Lz2hJJ/code-dark.png');
+$share-url: url('https://i.ibb.co/kXmhb3W/share-dark.png');
+$merge-file-url: url('https://i.ibb.co/3Fjt7mV/merge-dark.png');
+$find-url: url('https://i.ibb.co/2ZnxY57/search-dark.png');
+$replace-url: url('https://i.ibb.co/3Fjt7mV/merge-dark.png');
+$live-preview-url: url('https://i.ibb.co/KKj4088/fast-dark.png');
+$pin-url: url('https://i.ibb.co/DWpXnkr/pin-dark.png');
+$quote-url: url('https://i.ibb.co/TgcZbWN/brace-dark.png');
+$page-url: url('https://i.ibb.co/vDJxscj/paper-dark.png');
+$tag-url: url('https://i.ibb.co/tCnM06J/tag-dark.png');
+$image-url: url('https://i.ibb.co/Hxd7GBW/image-dark.png');
+$heading-url: url('https://i.ibb.co/Mf4CmkM/H-dark.png');
+$bold-url: url('https://i.ibb.co/gWDLmSz/bold-dark.png');
+$italic-url: url('https://i.ibb.co/gMDQmNm/I-dark.png');
+
+
+html {
+  font-size: 16px;
+  height: 100%;
+}
+body {
+  // height: 100%;
+  min-height: 100vh;
+  background: var(--body-bg);
+  color: var(--font);
+}
+.d-none {
+  display: none;
+}
+.d-flex {
+  display: flex;
+  align-items: center;
+}
+
+.scrollbar {
+  padding-left: 6px;
+  // 整體的樣式
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  // bar的樣式
+  &::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+}
+// icon-setting
+%icon-setting {
+  width: 20px;
+  height: 20px;
+  margin: 20px 5px;
+  cursor: pointer;
+}
