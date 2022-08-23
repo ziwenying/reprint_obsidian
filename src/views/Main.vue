@@ -12,7 +12,7 @@
           @blur="doneEdit"
           type="text"
           class="title"
-          placeholder="請輸入標題"
+          placeholder="輸入標題創建新筆記吧！"
         />
       </div>
       <!-- right icon -->
@@ -74,7 +74,6 @@
           </div>
         </div>
         <div class="side-content">
-          <!-- <h2 class="">Main Folder</h2> -->
           <div class="overview">
             <div class="overview-detail d-none">
               <img src="~@/assets/image/pin.png" alt="set" class="pin" />
@@ -125,9 +124,16 @@
                 @click="fetchFileData(file.id)"
                 class="file"
               >
-                {{ file.title }}
+                <label for="file">
+                  {{ file.title }}
+                </label>
+                <img
+                  @click.stop="deleteFile(file.id)"
+                  src="~@/assets/image/delete.png"
+                  alt="delete"
+                  class="icon"
+                />
               </div>
-              <ContextMenu class="d-none" />
             </div>
           </div>
         </div>
@@ -139,7 +145,7 @@
         @blur="doneEdit"
         class="note"
         rows="10"
-        placeholder="創建新筆記吧"
+        placeholder="開始寫筆記吧"
         autofocus
       ></textarea>
       <!-- right sidebar -->
@@ -212,13 +218,11 @@
 
 <script>
 import { v4 as uuidv4 } from "uuid";
-import ContextMenu from "@/components/ContextMenu .vue";
+import { Toast } from "./../utils/helpers";
 
 export default {
   name: "Main",
-  components: {
-    ContextMenu,
-  },
+  components: {},
   data() {
     return {
       thisTitle: "",
@@ -272,7 +276,11 @@ export default {
         });
         if (sameTitle) {
           this.currentEditFile.title = "";
-          return alert("標題重複");
+          return Toast.fire({
+            icon: "error",
+            title: "標題重複",
+            text: "請輸入新的標題",
+          });
         }
         const id = uuidv4();
         this.files.unshift({
@@ -305,6 +313,32 @@ export default {
         linkCount: 0,
       };
     },
+    deleteFile(fileId) {
+      Toast.fire({
+        title: "確定要刪除檔案?",
+        icon: "warning",
+        showConfirmButton: true,
+        confirmButtonColor: "#d33",
+        confirmButtonText: "是的，我要刪除!",
+        showCancelButton: true,
+        cancelButtonColor: "#444444",
+        cancelButtonText: "取消",
+      }).then((result) => {
+        if (result.value) {
+          this.files = this.files.filter((file) => {
+            return file.id !== fileId;
+          });
+          if (fileId === this.currentEditFile.id) {
+            this.currentEditFile = {
+              id: -1,
+              title: "",
+              text: "",
+            };
+          }
+          Toast.fire("刪除!", "檔案已經成功刪除囉！", "success");
+        }
+      });
+    },
     saveStorage() {
       localStorage.setItem("files", JSON.stringify(this.files));
     },
@@ -328,6 +362,7 @@ export default {
     height: 60px;
     background: $nav-sidebar;
     .title-wrapper {
+      width: 100%;
       .icon {
         display: none;
       }
@@ -468,10 +503,24 @@ export default {
             padding: 10px 5px;
             background: $body-bg;
             .file {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
               width: 100%;
               margin: 0 20px 0 0;
               padding: 10px 20px;
               color: $icon-and-light-font;
+              label {
+                font-weight: 700;
+              }
+              .icon {
+                @extend %icon-setting;
+                background-size: 20px;
+                &:hover {
+                  background: $icon-hover;
+                  border-radius: 5px;
+                }
+              }
             }
             .file:hover {
               border-radius: 10px;
